@@ -1,7 +1,9 @@
 import Link from "next/link";
+import type { TurmaLevel } from "@guerreiros/contracts";
 import { getTurmas } from "@/lib/server";
 import { brl } from "@/lib/format";
 import { StatusChip, when } from "@/components/turmas-shared";
+import { BOOK_COVERS, turmaCover } from "@/lib/turma-cover";
 import "@/app/turmas.css";
 
 export const metadata = {
@@ -111,11 +113,8 @@ export default async function TurmasPage() {
               {turma ? (
                 <>
                   <img
-                    src={
-                      turma.imageUrl ||
-                      "/static/design/logos/simbolo-escuro.svg"
-                    }
-                    alt={turma.imageAlt || turma.title}
+                    src={turmaCover(turma.bookLevel, turma.imageUrl)}
+                    alt={turma.imageAlt || `Capa do livro Guerreiro ${level}`}
                     loading="lazy"
                     width="640"
                     height="420"
@@ -154,14 +153,14 @@ export default async function TurmasPage() {
                 </>
               ) : (
                 <>
+                  <img
+                    src={BOOK_COVERS[level as TurmaLevel]}
+                    alt={`Capa do livro Guerreiro ${level}`}
+                    loading="lazy"
+                    width="640"
+                    height="420"
+                  />
                   <div className="turma-level-empty">
-                    <img
-                      src="/static/design/logos/simbolo-escuro.svg"
-                      alt=""
-                      loading="lazy"
-                      width="120"
-                      height="150"
-                    />
                     <p>
                       A turma do Guerreiro {level} ainda não foi aberta.
                       Manifeste o interesse e a gestão avalia a formação do

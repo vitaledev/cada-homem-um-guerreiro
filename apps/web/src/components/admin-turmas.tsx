@@ -10,6 +10,7 @@ import type {
 } from "@guerreiros/contracts";
 import { api } from "@/lib/browser";
 import { brl } from "@/lib/format";
+import { BOOK_COVERS, isAutoCover, turmaCover } from "@/lib/turma-cover";
 import { StatusChip, when } from "./turmas";
 import { TurmaContentEditor } from "./turmas-studio";
 
@@ -334,7 +335,7 @@ export function AdminTurmas({
                       priceCents: 0,
                       seatsTotal: 0,
                       startDate: null,
-                      imageUrl: "/static/design/logos/simbolo-escuro.svg",
+                      imageUrl: BOOK_COVERS[1],
                       imageAlt: "",
                       items: [],
                     });
@@ -381,7 +382,7 @@ export function AdminTurmas({
                           }}
                         >
                           <img
-                            src={turma.imageUrl}
+                            src={turmaCover(turma.bookLevel, turma.imageUrl)}
                             alt=""
                             width="48"
                             height="58"
@@ -693,7 +694,7 @@ function AdminTurmaEditor({
     slug: turma.slug,
     subtitle: turma.subtitle,
     description: turma.description,
-    imageUrl: turma.imageUrl,
+    imageUrl: turmaCover(turma.bookLevel, turma.imageUrl),
     imageAlt: turma.imageAlt,
     startDate: dateValue(turma.startDate),
     status: turma.status,
@@ -850,12 +851,16 @@ function AdminTurmaEditor({
               Livro base
               <select
                 value={form.bookLevel}
-                onChange={(e) =>
+                onChange={(e) => {
+                  const bookLevel = Number(e.target.value) as 1 | 2 | 3 | 4;
                   setForm({
                     ...form,
-                    bookLevel: Number(e.target.value) as 1 | 2 | 3 | 4,
-                  })
-                }
+                    bookLevel,
+                    imageUrl: isAutoCover(form.imageUrl)
+                      ? BOOK_COVERS[bookLevel]
+                      : form.imageUrl,
+                  });
+                }}
               >
                 {[1, 2, 3, 4].map((level) => (
                   <option key={level} value={level}>

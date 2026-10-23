@@ -5,6 +5,7 @@ import { getTurma, authedApi } from "@/lib/server";
 import { brl } from "@/lib/format";
 import { StatusChip, TurmaActions } from "@/components/turmas";
 import { when } from "@/components/turmas-shared";
+import { turmaCover } from "@/lib/turma-cover";
 import "@/app/turmas.css";
 
 export async function generateMetadata({
@@ -45,8 +46,8 @@ export default async function TurmaPage({
       <section className="turma-detail">
         <div className="turma-detail-media">
           <img
-            src={turma.imageUrl || "/static/design/logos/simbolo-escuro.svg"}
-            alt={turma.imageAlt || turma.title}
+            src={turmaCover(turma.bookLevel, turma.imageUrl)}
+            alt={turma.imageAlt || `Capa do livro Guerreiro ${turma.bookLevel}`}
             width="1000"
             height="1000"
           />

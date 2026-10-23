@@ -11,6 +11,7 @@ import type {
   TurmaRequest,
 } from "@guerreiros/contracts";
 import { api } from "@/lib/browser";
+import { BOOK_COVERS, isAutoCover, turmaCover } from "@/lib/turma-cover";
 import { StatusChip, when } from "./turmas";
 
 const slugify = (s: string) =>
@@ -148,7 +149,7 @@ function TurmaForm({
     slug: turma?.slug || "",
     subtitle: turma?.subtitle || "",
     description: turma?.description || "",
-    imageUrl: turma?.imageUrl || "/static/design/logos/simbolo-escuro.svg",
+    imageUrl: turmaCover(turma?.bookLevel || 1, turma?.imageUrl || ""),
     imageAlt: turma?.imageAlt || "",
     startDate: dateValue(turma?.startDate || null),
     status: turma?.status || "DRAFT",
@@ -216,12 +217,16 @@ function TurmaForm({
           Livro base
           <select
             value={form.bookLevel}
-            onChange={(e) =>
+            onChange={(e) => {
+              const bookLevel = Number(e.target.value) as Turma["bookLevel"];
               setForm({
                 ...form,
-                bookLevel: Number(e.target.value) as Turma["bookLevel"],
-              })
-            }
+                bookLevel,
+                imageUrl: isAutoCover(form.imageUrl)
+                  ? BOOK_COVERS[bookLevel]
+                  : form.imageUrl,
+              });
+            }}
           >
             {[1, 2, 3, 4].map((level) => (
               <option key={level} value={level}>
