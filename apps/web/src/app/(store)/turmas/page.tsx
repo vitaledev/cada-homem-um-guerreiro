@@ -66,6 +66,14 @@ export default async function TurmasPage() {
           responsável conduzindo a jornada. Você manifesta o interesse, a gestão
           decide e o ambiente abre quando a turma acontece.
         </p>
+        <div className="turma-page-actions">
+          <a className="button dark-button" href="#livros">
+            Escolher um livro <span>↓</span>
+          </a>
+          <Link className="text-link" href="/minhas-turmas/">
+            Já participo de uma turma <span>↗</span>
+          </Link>
+        </div>
       </section>
       <div className="value-strip">
         <span>
@@ -78,7 +86,7 @@ export default async function TurmasPage() {
           <b>03</b> AMBIENTE EXCLUSIVO DE ENCONTROS.
         </span>
       </div>
-      <section className="section turma-levels-section">
+      <section className="section turma-levels-section" id="livros">
         <div className="section-heading">
           <div>
             <p className="eyebrow dark">OS QUATRO LIVROS</p>
@@ -89,9 +97,8 @@ export default async function TurmasPage() {
             </h2>
           </div>
           <p>
-            As turmas seguem a ordem dos livros. Se a turma do seu livro ainda
-            não foi aberta, manifeste o interesse: a gestão acompanha a demanda
-            para formar o próximo grupo.
+            Comece pelo livro que você está lendo. Em cada card, você vê a
+            situação da turma e o próximo passo disponível para você.
           </p>
           <Link className="text-link" href="/minhas-turmas/">
             Minhas turmas <span>↗</span>

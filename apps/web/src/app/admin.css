@@ -398,6 +398,193 @@
   margin: 0;
   accent-color: #183d47;
 }
+/* Abertura de turma */
+.turma-create-trigger {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  margin-bottom: 22px;
+  background: #fff;
+  border: 1px dashed #b9c8c4;
+  border-radius: 8px;
+  text-align: left;
+  color: var(--text);
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.turma-create-trigger:hover {
+  border-color: var(--deep);
+  background: #f7faf7;
+}
+.turma-create-trigger > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--deep);
+  color: var(--cyan);
+  font-size: 24px;
+  line-height: 1;
+}
+.turma-create-trigger strong {
+  display: block;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+.turma-create-trigger small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.turma-create-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+.turma-create-head h2 {
+  margin-bottom: 8px;
+}
+.turma-create-head .admin-help {
+  margin-top: 0;
+  max-width: 560px;
+}
+.turma-create-books {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 26px;
+}
+.turma-create-books button {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background: #fff;
+  border: 2px solid #e2e8e2;
+  border-radius: 8px;
+  text-align: left;
+  color: var(--text);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.turma-create-books button:hover {
+  border-color: #9fb5b8;
+}
+.turma-create-books button.active {
+  border-color: var(--deep);
+  box-shadow: inset 0 0 0 1px var(--deep);
+}
+.turma-create-books img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #f3f1eb;
+}
+.turma-create-books strong {
+  display: block;
+  font-size: 12px;
+}
+.turma-create-books small {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.turma-create-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 28px;
+  align-items: start;
+}
+.turma-create-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.turma-create-fields .wide {
+  grid-column: 1/-1;
+}
+.turma-create-fields label small {
+  display: block;
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.turma-create-fields textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc7c7;
+  border-radius: 3px;
+  font: inherit;
+  font-size: 13px;
+  margin-top: 10px;
+  resize: vertical;
+  background: #fff;
+}
+.turma-create-cover {
+  padding: 18px;
+  background: #f7f9f6;
+  border: 1px solid #dfe5df;
+  border-radius: 8px;
+}
+.turma-create-cover .eyebrow {
+  margin-bottom: 12px;
+}
+.turma-create-cover > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #e9e6dd;
+  margin-bottom: 14px;
+}
+.turma-create-upload {
+  display: block;
+  padding: 11px 12px;
+  border: 1px solid #bdc7c7;
+  border-radius: 3px;
+  background: #fff;
+  text-align: center;
+  font-size: 11px;
+  cursor: pointer;
+}
+.turma-create-upload:hover {
+  border-color: var(--deep);
+}
+.turma-create-upload input {
+  display: none;
+}
+.turma-create-cover .admin-link {
+  display: inline-block;
+  margin-top: 10px;
+}
+.turma-create-cover > label:last-child {
+  display: block;
+  margin-top: 16px;
+}
+.turma-create-actions {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #e8ece6;
+}
+.turma-create-actions .admin-help {
+  flex: 1;
+  min-width: 220px;
+  margin: 0;
+}
 @media (max-width: 1100px) {
   .admin-sidebar {
     width: 200px;
@@ -414,6 +601,12 @@
   }
   .admin-category-form {
     grid-template-columns: 1fr 1fr;
+  }
+  .turma-create-books {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .turma-create-body {
+    grid-template-columns: 1fr;
   }
   .main-nav {
     gap: 16px;
@@ -503,5 +696,12 @@
   }
   .admin-login-card {
     padding: 30px;
+  }
+  .turma-create-head {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .turma-create-fields {
+    grid-template-columns: 1fr;
   }
 }

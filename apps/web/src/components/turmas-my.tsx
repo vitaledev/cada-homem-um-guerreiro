@@ -52,6 +52,17 @@ export function MyTurmas({ initial }: { initial: TurmaOverview }) {
           </div>
         ) : null}
       </div>
+      <div className="my-turmas-guide" role="note">
+        <span className="my-turmas-guide-mark">COMO LER ESTA PÁGINA</span>
+        <p>
+          <strong>Solicitações</strong> mostram interesses em análise.{" "}
+          <strong>Matrículas</strong> são vagas aprovadas. Quando o acesso
+          estiver liberado, o botão leva direto ao ambiente da turma.
+        </p>
+        <Link className="text-link" href="/turmas/">
+          Ver turmas abertas <span>↗</span>
+        </Link>
+      </div>
       {tab === "minhas" || !initial.isLeader ? (
         <>
           <div className="my-turmas-grid">

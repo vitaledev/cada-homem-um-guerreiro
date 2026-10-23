@@ -8,9 +8,11 @@ import type {
   TurmaLeaderGrant,
   TurmaRequest,
 } from "@guerreiros/contracts";
+import { TURMA_STATUS_LABEL } from "@guerreiros/contracts";
 import { api } from "@/lib/browser";
 import { brl } from "@/lib/format";
 import { BOOK_COVERS, isAutoCover, turmaCover } from "@/lib/turma-cover";
+import { AdminTurmaCreate } from "./admin-turma-create";
 import { StatusChip, when } from "./turmas";
 import { TurmaContentEditor } from "./turmas-studio";
 
@@ -32,6 +34,32 @@ const priceText = (cents: number | null) =>
     ? ""
     : (cents / 100).toFixed(2).replace(".", ",");
 
+function turmaPayload(turma: Turma, patch: Partial<Turma> = {}) {
+  const merged = { ...turma, ...patch };
+  return {
+    bookLevel: merged.bookLevel,
+    title: merged.title,
+    slug: merged.slug,
+    subtitle: merged.subtitle,
+    description: merged.description,
+    status: merged.status,
+    leaderUserId: merged.leaderUserId,
+    priceCents: merged.priceCents,
+    seatsTotal: merged.seatsTotal,
+    startDate: merged.startDate,
+    imageUrl: turmaCover(merged.bookLevel, merged.imageUrl),
+    imageAlt: merged.imageAlt,
+    items: merged.items.map((item) => ({
+      ...(item.id ? { id: item.id } : {}),
+      name: item.name,
+      description: item.description,
+      priceCents: item.priceCents,
+      required: item.required,
+      order: item.order,
+    })),
+  };
+}
+
 export function AdminTurmas({
   allowed,
   initialTurmaId,
@@ -39,9 +67,7 @@ export function AdminTurmas({
   allowed: boolean;
   initialTurmaId: number | null;
 }) {
-  const [sub, setSub] = useState<SubTab>(
-    initialTurmaId ? "turmas" : "solicitacoes",
-  );
+  const [sub, setSub] = useState<SubTab>("turmas");
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [turmas, setTurmas] = useState<Turma[]>([]);
@@ -52,7 +78,11 @@ export function AdminTurmas({
   const [requestStatus, setRequestStatus] = useState("PENDING");
   const [requestBook, setRequestBook] = useState("");
   const [enrollmentStatus, setEnrollmentStatus] = useState("");
+  const [enrollmentTurma, setEnrollmentTurma] = useState("");
   const current = turmas.find((t) => t.id === currentId) || null;
+  const visibleEnrollments = enrollmentTurma
+    ? enrollments.filter((e) => e.turmaId === Number(enrollmentTurma))
+    : enrollments;
 
   async function loadAll() {
     const [list, reqs, enroll, grants] = await Promise.all([
@@ -82,6 +112,32 @@ export function AdminTurmas({
       setError((e as Error).message);
     }
   }
+  async function changeStatus(turma: Turma, status: Turma["status"]) {
+    if (
+      status === "CANCELLED" &&
+      !confirm("Cancelar a turma " + turma.title + "?")
+    )
+      return;
+    setError("");
+    setNotice("");
+    try {
+      await api<Turma>(
+        "turmas/" + turma.id,
+        "PATCH",
+        turmaPayload(turma, { status }),
+      );
+      setNotice(
+        'Turma "' +
+          turma.title +
+          '" agora está como ' +
+          TURMA_STATUS_LABEL[status].toLowerCase() +
+          ".",
+      );
+      await reload();
+    } catch (e) {
+      setError((e as Error).message);
+    }
+  }
   useEffect(() => {
     if (allowed) reload();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -90,9 +146,8 @@ export function AdminTurmas({
   if (!allowed)
     return (
       <p className="admin-error" role="alert">
-        A gestão das turmas é restrita ao gestor supremo da loja. Peça a um
-        administrador para conceder o acesso ou use a área do líder em minhas
-        turmas.
+        A gestão das turmas é restrita a administradores com permissão de
+        gestão. Peça ao gestor supremo para habilitar o acesso à sua conta.
       </p>
     );
 
@@ -317,44 +372,32 @@ export function AdminTurmas({
           />
         ) : (
           <>
-            <div className="admin-actions admin-heading-actions">
-              <button
-                className="button dark-button"
-                onClick={async () => {
-                  setError("");
-                  setNotice("");
-                  try {
-                    const created = await api<Turma>("turmas", "POST", {
-                      bookLevel: 1,
-                      title: "Nova turma",
-                      slug: "nova-turma-" + Date.now().toString(36),
-                      subtitle: "",
-                      description: "",
-                      status: "DRAFT",
-                      leaderUserId: null,
-                      priceCents: 0,
-                      seatsTotal: 0,
-                      startDate: null,
-                      imageUrl: BOOK_COVERS[1],
-                      imageAlt: "",
-                      items: [],
-                    });
-                    await reload();
-                    setCurrentId(created.id);
-                    setNotice(
-                      "Turma criada como rascunho. Ajuste os dados e mude o status para abrir as inscrições.",
-                    );
-                  } catch (e) {
-                    setError((e as Error).message);
-                  }
-                }}
-              >
-                + Nova turma <span>↗</span>
-              </button>
-            </div>
+            <AdminTurmaCreate
+              turmas={turmas}
+              leaders={leaders}
+              onCreated={async (created) => {
+                await reload();
+                setCurrentId(null);
+                setNotice(
+                  created.status === "OPEN"
+                    ? 'Turma "' +
+                        created.title +
+                        '" aberta com inscrições. Use Editar para incluir itens, conteúdo e ambiente.'
+                    : 'Turma "' +
+                        created.title +
+                        '" salva como rascunho. Use Abrir inscrições quando estiver pronta.',
+                );
+              }}
+            />
             <p className="admin-count">
-              {turmas.length} turmas · preço, vagas, itens, líder e ambiente
-              ficam sob a gestão
+              {turmas.length} turmas ·{" "}
+              {
+                turmas.filter(
+                  (t) => t.status === "OPEN" || t.status === "CONFIRMED",
+                ).length
+              }{" "}
+              com inscrições · preço, vagas, itens, líder e ambiente ficam sob a
+              gestão
             </p>
             <div className="admin-table-wrap">
               <table className="admin-table">
@@ -399,13 +442,47 @@ export function AdminTurmas({
                       </td>
                       <td>{turma.priceCents ? brl(turma.priceCents) : "—"}</td>
                       <td>
-                        {turma.seatsTotal
-                          ? turma.seatsTaken + " / " + turma.seatsTotal
-                          : "livre"}
+                        <button
+                          className="admin-link"
+                          title="Ver matrículas desta turma"
+                          onClick={() => {
+                            setEnrollmentTurma(String(turma.id));
+                            setSub("matriculas");
+                          }}
+                        >
+                          {turma.seatsTotal
+                            ? turma.seatsTaken + " / " + turma.seatsTotal
+                            : "livre"}
+                        </button>
                       </td>
                       <td>{turma.interestCount}</td>
                       <td>{turma.leaderUsername || "—"}</td>
                       <td>
+                        {turma.status === "DRAFT" ? (
+                          <button
+                            className="admin-link"
+                            onClick={() => changeStatus(turma, "OPEN")}
+                          >
+                            Abrir inscrições
+                          </button>
+                        ) : null}
+                        {turma.status === "OPEN" ? (
+                          <button
+                            className="admin-link"
+                            onClick={() => changeStatus(turma, "CONFIRMED")}
+                          >
+                            Confirmar
+                          </button>
+                        ) : null}
+                        {turma.status === "OPEN" ||
+                        turma.status === "CONFIRMED" ? (
+                          <button
+                            className="admin-link"
+                            onClick={() => changeStatus(turma, "FINISHED")}
+                          >
+                            Encerrar
+                          </button>
+                        ) : null}
                         <button
                           className="admin-link"
                           onClick={() => {
@@ -486,10 +563,26 @@ export function AdminTurmas({
                 <option value="CANCELLED">Canceladas</option>
               </select>
             </label>
+            <label>
+              Turma
+              <select
+                value={enrollmentTurma}
+                onChange={(e) => setEnrollmentTurma(e.target.value)}
+              >
+                <option value="">Todas as turmas</option>
+                {turmas.map((t) => (
+                  <option key={t.id} value={t.id}>
+                    {t.title} · Guerreiro {t.bookLevel}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
           <p className="admin-count">
-            {enrollments.length} matrículas · confirme manualmente apenas
-            pagamentos fora do fluxo simulado
+            {visibleEnrollments.length} matrículas ·{" "}
+            {visibleEnrollments.filter((e) => e.status === "CONFIRMED").length}{" "}
+            confirmadas · confirme manualmente apenas pagamentos fora do fluxo
+            simulado
           </p>
           <div className="admin-table-wrap">
             <table className="admin-table">
@@ -504,7 +597,7 @@ export function AdminTurmas({
                 </tr>
               </thead>
               <tbody>
-                {enrollments.map((enrollment) => (
+                {visibleEnrollments.map((enrollment) => (
                   <tr key={enrollment.id}>
                     <td>{enrollment.username}</td>
                     <td>{enrollment.turmaTitle}</td>
@@ -569,7 +662,7 @@ export function AdminTurmas({
                 ))}
               </tbody>
             </table>
-            {!enrollments.length ? (
+            {!visibleEnrollments.length ? (
               <p className="empty-state">Nenhuma matrícula neste filtro.</p>
             ) : null}
           </div>
