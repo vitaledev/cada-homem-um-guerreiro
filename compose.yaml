@@ -1,0 +1,83 @@
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?configure POSTGRES_DB}
+      POSTGRES_USER: guerreiros_bootstrap
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?configure POSTGRES_ADMIN_PASSWORD}
+      APP_DB_USER: ${POSTGRES_USER:?configure POSTGRES_USER}
+      APP_DB_PASSWORD: ${POSTGRES_PASSWORD:?configure POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deploy/postgres/01-app-user.sh:/docker-entrypoint-initdb.d/01-app-user.sh:ro
+    networks: [database]
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  api:
+    build:
+      context: .
+      target: api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?configure DATABASE_URL}
+      APP_ORIGINS: https://${APP_DOMAIN:?configure APP_DOMAIN}
+      TRUST_PROXY: "true"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - media_data:/app/media
+    networks: [database, web]
+    init: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "fetch('http://127.0.0.1:3001/api/v1/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+  web:
+    build:
+      context: .
+      target: web
+    restart: unless-stopped
+    environment:
+      API_INTERNAL_URL: http://api:3001
+    depends_on:
+      api:
+        condition: service_healthy
+    networks: [web]
+    init: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?configure APP_DOMAIN}
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [web]
+    networks: [web]
+volumes:
+  postgres_data:
+  media_data:
+  caddy_data:
+  caddy_config:
+networks:
+  database:
+    internal: true
+  web:

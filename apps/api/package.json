@@ -1,0 +1,37 @@
+{
+  "name": "@guerreiros/api",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/main.js",
+    "dev": "tsc --watch",
+    "migrate": "node dist/database/migrate.js",
+    "import:legacy": "node dist/database/import.js",
+    "test": "node --test test/*.test.cjs"
+  },
+  "dependencies": {
+    "@guerreiros/contracts": "workspace:*",
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "@nestjs/platform-express": "^11.0.0",
+    "cookie-parser": "^1.4.7",
+    "helmet": "^8.0.0",
+    "pg": "^8.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.0",
+    "sharp": "^0.34.0",
+    "sql.js": "^1.13.0",
+    "typeorm": "^0.3.28",
+    "zod": "^4.0.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.0",
+    "@types/express": "^5.0.0",
+    "@types/multer": "^2.0.0",
+    "@types/sql.js": "^1.4.0",
+    "tsx": "^4.20.0"
+  }
+}

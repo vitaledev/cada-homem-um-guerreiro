@@ -1,0 +1,22 @@
+{
+  "name": "guerreiros",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "pnpm --filter @guerreiros/contracts build && pnpm --filter @guerreiros/api build && pnpm --filter @guerreiros/web build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm --filter @guerreiros/api test",
+    "migrate": "pnpm --filter @guerreiros/api migrate",
+    "import:legacy": "pnpm --filter @guerreiros/api import:legacy",
+    "format": "prettier --write apps/*/src packages/*/src scripts/*.mjs package.json compose.yaml pnpm-workspace.yaml",
+    "format:check": "prettier --check apps/*/src packages/*/src scripts/*.mjs package.json compose.yaml pnpm-workspace.yaml"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.0"
+  }
+}

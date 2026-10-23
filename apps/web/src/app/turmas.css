@@ -1,0 +1,1182 @@
+/* Turmas — páginas públicas, ambiente exclusivo, entrada, minhas turmas e estúdio.
+   Segue os tokens de store.css (--deep, --cyan, --paper, --line, --muted). */
+
+/* ---------- Selo de status (StatusChip) ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #ececea;
+  color: #3c4a4f;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.chip.ok {
+  background: #e2f0e6;
+  color: #2b6152;
+}
+.chip.wait {
+  background: #fdf1d8;
+  color: #8a6412;
+}
+.chip.bad {
+  background: #fae7e5;
+  color: #942f31;
+}
+
+/* ---------- Notas de estado (turma-note) ---------- */
+.turma-note {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 16px;
+  background: #e9edef;
+  border-left: 3px solid #45616a;
+  font-size: 12px;
+  line-height: 1.75;
+  color: #33454b;
+}
+.turma-note strong {
+  font-size: 12px;
+}
+.turma-note a {
+  text-decoration: underline;
+}
+.turma-note .button {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+.turma-note.ok {
+  background: #e2f0e6;
+  border-left-color: #39705e;
+  color: #285849;
+}
+.turma-note.bad {
+  background: #fae7e5;
+  border-left-color: #9b3933;
+  color: #7b2c27;
+}
+
+/* ---------- Listagem pública (/turmas) ---------- */
+.turma-levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+  gap: 24px;
+}
+.turma-level-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.turma-level-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.turma-book {
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.turma-level-card h3 {
+  font-size: 27px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+.turma-level-card h3 b {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 17px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.turma-level-card > img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background: #eceae4;
+}
+.turma-level-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.turma-level-facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 11px;
+  color: #4c5d62;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.turma-level-facts b {
+  display: inline-block;
+  min-width: 82px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.turma-level-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 26px 14px;
+  text-align: center;
+  background: #f0eee7;
+  border: 1px dashed #c4ccc7;
+}
+.turma-level-empty img {
+  width: 54px;
+  height: auto;
+  opacity: 0.5;
+}
+.turma-level-empty p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.turma-level-card .button {
+  justify-content: space-between;
+}
+
+/* Passos (lista numerada) */
+.turma-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 22px;
+  counter-reset: turma-step;
+}
+.turma-steps li {
+  padding-top: 18px;
+  border-top: 2px solid var(--deep);
+}
+.turma-steps span {
+  display: block;
+  font-family: var(--display);
+  font-size: 30px;
+  color: var(--cyan);
+  -webkit-text-stroke: 1px var(--deep);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.turma-steps h3 {
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  margin-bottom: 9px;
+}
+.turma-steps p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* ---------- Detalhe da turma (/turma/[slug]) ---------- */
+.turma-detail {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 8%;
+  padding: 0 5% 70px;
+}
+.turma-detail-media {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.turma-detail-media > img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: #eceae4;
+}
+.turma-detail-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.turma-detail-strip span {
+  padding: 13px 15px;
+  font-size: 11px;
+  color: #4c5d62;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.turma-detail-strip b {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.turma-detail-info {
+  padding-top: 22px;
+}
+.turma-detail-info h1 {
+  font-size: 39px;
+  letter-spacing: -1.1px;
+  line-height: 1.13;
+  margin: 17px 0 10px;
+}
+.turma-detail-price {
+  margin: 26px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.turma-detail-price strong {
+  font-size: 27px;
+  font-weight: 500;
+}
+.turma-items {
+  margin: 26px 0;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+.turma-items h2 {
+  font-size: 17px;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+.turma-items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.turma-items li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12px;
+}
+.turma-items li span strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.turma-items li span small,
+.turma-items li small {
+  color: var(--muted);
+  line-height: 1.7;
+}
+.turma-items li > b {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.turma-items-note {
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.turma-detail-info details summary::after {
+  font-weight: 700;
+}
+.turma-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 24px 0;
+}
+
+/* ---------- Solicitação de interesse ---------- */
+.interest-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.interest-form textarea {
+  display: block;
+  width: 100%;
+  min-height: 86px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  border: 1px solid #bdc7c7;
+  border-radius: 3px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  resize: vertical;
+}
+.interest-form small {
+  color: var(--muted);
+  font-weight: 400;
+}
+.interest-form .button {
+  justify-content: space-between;
+}
+
+/* ---------- Ambiente exclusivo ---------- */
+.ambiente-locked {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 90px 5%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.ambiente-locked h1 {
+  font-size: clamp(32px, 5vw, 46px);
+  letter-spacing: -1.6px;
+  line-height: 1.15;
+}
+.ambiente-locked > p:not(.eyebrow) {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 52ch;
+}
+.ambiente-locked-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 6px;
+}
+.ambiente-shell {
+  background: #fff;
+}
+.ambiente-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--deep);
+  color: #fff;
+  padding: 64px 5% 52px;
+}
+.ambiente-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+}
+.ambiente-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 17, 23, 0.95) 0%,
+      rgba(4, 17, 23, 0.7) 45%,
+      rgba(4, 17, 23, 0.15) 100%
+    ),
+    linear-gradient(0deg, rgba(4, 17, 23, 0.7), transparent 45%);
+}
+.ambiente-shell.accent-deep .ambiente-hero-shade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 6, 6, 0.95) 0%,
+      rgba(24, 11, 11, 0.72) 45%,
+      rgba(24, 11, 11, 0.2) 100%
+    ),
+    linear-gradient(0deg, rgba(12, 6, 6, 0.75), transparent 45%);
+}
+.ambiente-hero-content {
+  position: relative;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ambiente-hero h1 {
+  font-size: clamp(34px, 5.5vw, 56px);
+  letter-spacing: -1.8px;
+  line-height: 1.08;
+}
+.ambiente-hero-text {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #d0ddde;
+  max-width: 62ch;
+  white-space: pre-line;
+}
+.ambiente-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #d0ddde;
+}
+.ambiente-hero-meta .chip {
+  background: rgba(255, 255, 255, 0.14);
+  color: #eaf6f8;
+}
+.ambiente-staff-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 6px;
+  padding: 12px 16px;
+  background: rgba(115, 212, 231, 0.14);
+  border: 1px solid rgba(115, 212, 231, 0.4);
+  font-size: 11px;
+}
+.ambiente-staff-bar strong {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+.ambiente-staff-bar a {
+  text-decoration: underline;
+}
+.ambiente-body {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 34px;
+  padding: 42px 5% 70px;
+  align-items: start;
+}
+.ambiente-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+.ambiente-module {
+  border: 1px solid var(--line);
+  background: #fbfaf6;
+}
+.ambiente-module > header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--deep);
+  color: #fff;
+}
+.ambiente-module-number {
+  font-family: var(--display);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+.ambiente-module > header div {
+  flex: 1;
+  min-width: 0;
+}
+.ambiente-module h2 {
+  font-size: 19px;
+  letter-spacing: -0.6px;
+  margin-bottom: 6px;
+}
+.ambiente-module > header p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #b5c9ce;
+}
+.ambiente-module > header .chip {
+  background: rgba(255, 255, 255, 0.14);
+  color: #eaf6f8;
+}
+.ambiente-lessons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ambiente-lessons li {
+  border-bottom: 1px solid var(--line);
+}
+.ambiente-lessons li:last-child {
+  border-bottom: 0;
+}
+.ambiente-lessons details {
+  border-bottom: 0;
+  padding: 0;
+}
+.ambiente-lessons summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  font-size: 13px;
+}
+.ambiente-lessons summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 15px;
+  color: var(--muted);
+}
+.ambiente-lessons details[open] summary::after {
+  content: "−";
+}
+.ambiente-lessons summary strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+.ambiente-lessons summary small {
+  color: var(--muted);
+  line-height: 1.6;
+}
+.ambiente-lesson-index {
+  font-family: var(--display);
+  font-size: 15px;
+  color: #45616a;
+  min-width: 34px;
+}
+.ambiente-lesson-body {
+  padding: 0 20px 18px 68px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #4c5d62;
+}
+.ambiente-lesson-body p {
+  margin-bottom: 12px;
+}
+.ambiente-lesson-body .text-link {
+  margin-top: 6px;
+}
+.ambiente-empty {
+  padding: 24px 20px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+  text-align: center;
+}
+.ambiente-empty-state {
+  padding: 55px 30px;
+  text-align: center;
+  background: #f0eee7;
+  border: 1px dashed #c4ccc7;
+}
+.ambiente-empty-state h2 {
+  font-size: 27px;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+.ambiente-empty-state p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 56ch;
+  margin: 0 auto;
+}
+.ambiente-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+.ambiente-panel {
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.ambiente-panel h2 {
+  font-size: 15px;
+  letter-spacing: -0.4px;
+  margin-bottom: 16px;
+}
+.ambiente-panel ul {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 12px;
+  color: #4c5d62;
+}
+.ambiente-panel ul li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px dashed var(--line);
+}
+.ambiente-panel ul li b {
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+}
+.ambiente-roster li {
+  align-items: baseline;
+}
+.ambiente-roster small {
+  color: var(--muted);
+}
+
+/* ---------- Entrar (/entrar) ---------- */
+.entrar-shell {
+  padding: 60px 5% 80px;
+  display: flex;
+  justify-content: center;
+}
+.entrar-card {
+  width: min(100%, 470px);
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.entrar-card h1 {
+  font-size: 37px;
+  letter-spacing: -1.4px;
+  line-height: 1.15;
+}
+.entrar-help {
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.entrar-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 6px;
+}
+.entrar-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  background: #eef0ec;
+}
+.entrar-tabs button {
+  padding: 11px 10px;
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  border-radius: 3px;
+}
+.entrar-tabs button.active {
+  background: var(--deep);
+  color: #fff;
+}
+.entrar-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.entrar-panel form .button {
+  justify-content: center;
+}
+.entrar-back {
+  font-size: 11px;
+  color: var(--muted);
+}
+.entrar-back a {
+  text-decoration: underline;
+}
+
+/* ---------- Minhas turmas (/minhas-turmas) ---------- */
+.my-turmas-title {
+  font-size: 46px;
+  letter-spacing: -1.8px;
+  line-height: 1.1;
+}
+.my-turmas-tabs {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.my-turmas-tabs button {
+  padding: 11px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.my-turmas-tabs button.active {
+  background: var(--deep);
+  border-color: var(--deep);
+  color: #fff;
+}
+.my-turmas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 26px;
+}
+.my-turmas-block h2 {
+  font-size: 17px;
+  letter-spacing: -0.5px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--deep);
+}
+.my-turmas-block > div {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.my-turma-card {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.my-turma-card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.my-turma-card h3 {
+  font-size: 18px;
+  letter-spacing: -0.6px;
+  line-height: 1.3;
+}
+.my-turma-card p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.my-turma-card .button {
+  align-self: flex-start;
+  justify-content: space-between;
+}
+.my-turma-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.my-turma-list article {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.my-turma-list header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.my-turma-list header strong {
+  font-size: 13px;
+}
+.my-turma-list p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.my-turma-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 24px;
+  background: #f0eee7;
+  border: 1px dashed #c4ccc7;
+}
+.my-turma-empty p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+/* ---------- Estúdio do líder (/minhas-turmas · área do líder) ---------- */
+.studio {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.studio-layout {
+  display: grid;
+  grid-template-columns: minmax(230px, 300px) minmax(0, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+.studio-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.studio-side h2 {
+  font-size: 15px;
+  letter-spacing: -0.4px;
+}
+.studio-side ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.studio-side li > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  text-align: left;
+  background: #f4f5f1;
+  border: 1px solid transparent;
+  font-size: 12px;
+}
+.studio-side li > button.active {
+  background: var(--deep);
+  color: #fff;
+  border-color: var(--deep);
+}
+.studio-side li > button span {
+  min-width: 0;
+}
+.studio-side li > button strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.studio-side li > button small {
+  color: var(--muted);
+  font-size: 10px;
+}
+.studio-side li > button.active small {
+  color: #b5c9ce;
+}
+.studio-side .button {
+  justify-content: center;
+}
+.studio-main {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+.studio-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.studio-panel h2 {
+  font-size: 18px;
+  letter-spacing: -0.6px;
+}
+.studio-help {
+  font-size: 11px;
+  line-height: 1.75;
+  color: var(--muted);
+}
+.studio-subtitle {
+  font-size: 13px;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.studio-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.studio-fields .wide {
+  grid-column: 1 / -1;
+}
+.studio-fields textarea {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  border: 1px solid #bdc7c7;
+  border-radius: 3px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  resize: vertical;
+}
+.studio-fields small {
+  color: var(--muted);
+  font-weight: 400;
+}
+.studio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+.studio-link {
+  background: none;
+  padding: 6px 4px;
+  font-size: 11px;
+  color: #245d6d;
+  text-decoration: underline;
+}
+.studio-link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.studio-link.danger {
+  color: #942f31;
+}
+.studio-table-wrap {
+  overflow: auto;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.studio-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+.studio-table th {
+  padding: 13px 15px;
+  background: #e8ede8;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.studio-table td {
+  padding: 13px 15px;
+  border-top: 1px solid #e8ece6;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+.studio-table + .studio-subtitle {
+  margin-top: 26px;
+}
+
+/* ---------- Editor de conteúdo (líder e gestor) ---------- */
+.content-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.content-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  background: #f7f7f3;
+  border: 1px solid var(--line);
+}
+.content-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+.content-fields .wide {
+  grid-column: 1 / -1;
+}
+.content-fields textarea {
+  display: block;
+  width: 100%;
+  min-height: 130px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  border: 1px solid #bdc7c7;
+  border-radius: 3px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  resize: vertical;
+}
+.content-fields small {
+  color: var(--muted);
+  font-weight: 400;
+}
+.content-modules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.content-modules > li {
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.content-modules > li > header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+}
+.content-index {
+  font-family: var(--display);
+  font-size: 17px;
+  color: #45616a;
+}
+.content-modules > li > header div {
+  flex: 1;
+  min-width: 150px;
+}
+.content-modules > li > header strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+.content-modules > li > header small {
+  color: var(--muted);
+}
+.content-lessons {
+  border-top: 1px solid var(--line);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fbfaf6;
+}
+.content-lessons ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.content-lessons ol > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.content-lessons ol > li > div {
+  flex: 1;
+  min-width: 140px;
+}
+.content-lessons ol > li strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+.content-lessons ol > li small {
+  color: var(--muted);
+}
+.content-lessons .content-form {
+  background: #fff;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1100px) {
+  .turma-detail {
+    gap: 5%;
+  }
+  .ambiente-body {
+    grid-template-columns: minmax(0, 1.6fr) minmax(230px, 1fr);
+    gap: 24px;
+  }
+  .studio-layout {
+    grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
+  }
+}
+@media (max-width: 860px) {
+  .turma-detail,
+  .ambiente-body,
+  .studio-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .turma-detail {
+    padding: 0 5% 50px;
+  }
+  .turma-detail-info {
+    padding-top: 0;
+  }
+  .studio-fields,
+  .content-fields {
+    grid-template-columns: 1fr;
+  }
+  .content-fields .wide,
+  .studio-fields .wide {
+    grid-column: auto;
+  }
+  .ambiente-hero {
+    padding: 44px 5% 38px;
+  }
+  .ambiente-lesson-body {
+    padding-left: 20px;
+  }
+  .my-turmas-tabs {
+    width: 100%;
+  }
+  .my-turmas-tabs button {
+    flex: 1;
+  }
+}
+@media (max-width: 560px) {
+  .turma-levels {
+    grid-template-columns: 1fr;
+  }
+  .turma-detail-strip {
+    grid-template-columns: 1fr;
+  }
+  .entrar-card {
+    padding: 26px 20px;
+  }
+  .my-turmas-title {
+    font-size: 34px;
+    letter-spacing: -1.2px;
+  }
+  .studio-panel {
+    padding: 18px;
+  }
+  .ambiente-lessons summary {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+}

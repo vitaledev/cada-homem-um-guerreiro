@@ -1,0 +1,7 @@
+{
+  "repository": "openai/skills",
+  "path": "skills/.curated/security-threat-model",
+  "ref": "main",
+  "retrieved_on": "2026-10-22",
+  "url": "https://github.com/openai/skills/tree/main/skills/.curated/security-threat-model"
+}

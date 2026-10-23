@@ -1,0 +1,31 @@
+{
+  "mode": "ferramenta nativa image_gen",
+  "generated_on": "2026-10-22",
+  "assets": [
+    {
+      "name": "hero",
+      "prompt": "Use case: photorealistic-natural. Asset: wide ecommerce hero photograph for Brazilian Christian menswear and books brand Cada Homem Um Guerreiro. Cinematic editorial photograph, a lone male hiker on the far right third seen from behind wearing a simple dark navy shirt and small backpack standing on a rocky ridge above dramatic Brazilian mountain ranges at dawn. Soft warm sunrise behind mountains, deep blue charcoal foreground, subtle cyan atmosphere, authentic natural textures, restrained luxury outdoor editorial. Left half dark expansive negative space for HTML headline. Wide landscape 3:2. No text, no logos, no lettering, no weapons, no religious props, no fantasy, no watermark. Brand direction: strength through quiet purpose.",
+      "hint": "Generated images are saved to /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320 as /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-3f1153dd-7d29-403a-91ef-f0596609e941.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "name": "camiseta",
+      "prompt": "Use case: product-mockup. Premium editorial ecommerce product photograph of a dark navy heavyweight cotton men's t-shirt neatly laid flat on warm off-white limestone, three-quarter top view, shirt fills the image with all hems visible. Print the exact original white G shield symbol from the reference centered small on chest. No other text. Natural textile texture, sophisticated soft side light and sculptural shadow, neutral background, square framing. Reference is ONLY for the shield brand shape, do not reproduce print instruction sheet. No other props or watermark.",
+      "hint": "Generated images are saved to /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320 as /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-83a57b38-e4d7-4811-98d1-ae19791d31ca.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "name": "garrafa",
+      "prompt": "Use case: product-mockup. Premium ecommerce editorial still life, a single dark graphite olive matte stainless steel insulated bottle, tall and elegant with rounded screw lid, exact white G shield emblem from reference printed small on front, standing on light warm stone, soft side illumination, quiet shadows, light beige background. Square framing with complete bottle visible. Reference ONLY for shield shape, no lettering, no other props, no watermarks. Concept product.",
+      "hint": "Generated images are saved to /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320 as /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-ebfefd37-a569-4689-99bf-086100704583.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "name": "caderno",
+      "prompt": "Use case: product-mockup. Premium ecommerce editorial photograph, a navy cloth hardbound notebook with a small exact silver-white G shield emblem from the reference embossed on its front cover, closed, three-quarter view on warm off-white stone studio table, fine paper edges, understated bookmark ribbon, refined shadows, neutral background, square composition, whole notebook visible. Reference ONLY for the shield emblem; no title, no text, no watermark. Concept stationery.",
+      "hint": "Generated images are saved to /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320 as /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-4f8234c7-1a4e-48b4-88b6-ecb688c6bf2c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "name": "kit",
+      "prompt": "Use case: product-mockup. Premium editorial ecommerce photograph of an open charcoal gift box with a navy cloth notebook, matte dark bottle and folded navy t-shirt arranged in black tissue, subtle white G shield emblem from the reference on the notebook and bottle, warm off-white limestone studio background, side lighting, elevated minimal styling, square composition entire box visible. Reference ONLY for shield emblem, do not reproduce print instructions; no text, no watermark. Concept gift kit.",
+      "hint": "Generated images are saved to /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320 as /home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-3a1a07d1-58b0-46b0-b630-b60e05a28bfb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  ]
+}

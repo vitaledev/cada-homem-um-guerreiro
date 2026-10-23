@@ -1,0 +1,21 @@
+{
+  "name": "@guerreiros/web",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "next build && node ../../scripts/prepare-web.mjs",
+    "start": "node .next/standalone/apps/web/server.js",
+    "dev": "next dev -H 127.0.0.1 -p 8000",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@guerreiros/contracts": "workspace:*",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+}

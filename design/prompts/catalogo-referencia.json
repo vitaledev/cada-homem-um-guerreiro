@@ -1,0 +1,86 @@
+{
+  "mode": "Ferramenta nativa image_gen",
+  "source": "referencias/catalogo-produtos.png",
+  "assets": [
+    {
+      "name": "livro-guerreiro-1",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single upright red burgundy paperback book. Cover closely matching reference red book: aged deep red textured background, large gold serif 'Cada homem um GUERREIRO', smaller 'LIVRO 1', subtitle 'Andar com Deus', a silver sword diagonally upward from lower left to upper right, author 'LONNIE BERGER' along bottom. Faithful title, front cover legible.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-33d211b6-7083-4199-a10e-d4ede5f3db80.png"
+    },
+    {
+      "name": "livro-guerreiro-2",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single upright deep royal navy blue paperback book. Cover matching reference blue book: aged blue texture, gold serif headline 'Cada homem um GUERREIRO', small 'LIVRO 2', a long silver sword diagonally upward from lower left to upper right, author 'LONNIE BERGER' at bottom. No invented subtitle. Front cover legible.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-f82b0791-bc0c-4b4d-b2f3-931c94b8dbf6.png"
+    },
+    {
+      "name": "livro-guerreiro-3",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single upright forest green paperback book. Cover matching reference green book: textured green, pale gold tall serif 'Cada homem um GUERREIRO', small 'LIVRO 3', a silver sword diagonally upward from lower left to upper right, 'LONNIE BERGER' at bottom. Use correct LIVRO 3 despite screenshot's inconsistent small text. Front cover legible.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-ced03b80-9d4b-4653-91ff-6bf95fdc8354.png"
+    },
+    {
+      "name": "livro-homens-impacto",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single upright paperback matching reference 'HOMENS DE IMPACTO': dark teal to blue atmospheric mountain landscape cover, two male hikers silhouettes at bottom, large white condensed allcaps 'HOMENS DE IMPACTO' in upper half. Small subtitle 'Atitudes que transformam vidas'. No invented author name. Front cover readable.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-2ecee85e-01ec-48f2-8d10-6a3860553a48.png"
+    },
+    {
+      "name": "livro-ceu-invisivel",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single upright paperback matching reference 'O CEO INVISÍVEL': moody deep teal/navy cover with soft vertical light shaft in center and small silhouette at bottom, large tall white condensed typography 'O CEO INVISÍVEL' stacked in center. Small author name 'ADRIANO LEOPOLDINO' near top as in reference. Do not add invented subtitle. Readable front cover.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-31e13a22-c090-4268-bcae-57081a40b862.png"
+    },
+    {
+      "name": "livro-jesus-ordenou",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single upright paperback matching reference 'TUDO O QUE JESUS ORDENOU': mint green paper cover, large dark black bold condensed stacked words 'TUDO O QUE JESUS ORDENOU', red author name 'JOHN PIPER' at top, muted red narrow vertical accent stripe on right. Clean legible front cover.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-e10d275f-566a-48bb-9306-367be41018a2.png"
+    },
+    {
+      "name": "biblia-365-naa",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single closed upright black/navy leather-textured hardbound Bible matching the launch product in reference. Front cover cyan small 'CADA HOMEM UM', white angular 'GUERREIRO' with white G shield at right, discreet small label 'BÍBLIA 365 NAA' above logo. Fine black page edges, sewn binding, black bookmark. Entire Bible visible.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-9accdcf4-d690-46bf-b382-f490a5c101a9.png"
+    },
+    {
+      "name": "biblia-personalizada",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single black leather hardcover Bible as in reference category image: three-quarter angle lying on warm limestone, softly rounded corners, realistic black grained leather, fine stitched border, original G shield in pale gold centered front cover, gold page edges and ribbon bookmark. No large title text on front. Complete item visible.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-550faaf1-dbd2-4f64-9ae6-7f617375c9bf.png"
+    },
+    {
+      "name": "camiseta-logo-oficial",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single navy crewneck t-shirt neatly laid flat, entire garment and both sleeves visible. Match the plain official logo shirt from reference, not the later PDF shirt: small centered white G shield above a line of white angular text 'GUERREIRO', tiny cyan 'CADA HOMEM UM'. No sleeve prints, no large side print, no other graphics. Natural cotton weave.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-d3cce152-3a2d-4242-be88-23cceade4343.png"
+    },
+    {
+      "name": "camiseta-logo-minimal",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single black crewneck cotton t-shirt laid flat, whole garment visible, as reference black minimal shirt: ONLY a small original white G shield centered upper chest. No text or other graphics, no sleeve print.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-134c249c-7ef1-41ef-b6e3-fa70e8ea2311.png"
+    },
+    {
+      "name": "camiseta-si-vis-pacem",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single black crewneck cotton t-shirt laid flat, whole garment visible. Match slogan shirt product in reference, using its stated product title 'Si Vis Pacem Para Bellum': tiny cyan G shield at top followed by centered stacked condensed white uppercase words 'SI VIS' / 'PACEM' / 'PARA' / 'BELLUM'. Small cyan G shield at bottom. No other graphics. Sharp legible print.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-e23ffd13-f195-4f9f-9c33-850b465f3fc2.png"
+    },
+    {
+      "name": "caneca-logo-oficial",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single matte black ceramic coffee mug with curved handle pointing right, matching reference accessories. Original bold white G shield centered on front, no text. Soft studio three-quarter view, complete mug and handle visible. Smooth matte texture and realistic ceramic rim.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-ae3877db-cc2e-4145-9c93-377eeed51c72.png"
+    },
+    {
+      "name": "garrafa-750ml",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single dark olive forest-green stainless steel insulated bottle, 750 ml concept, matching reference accessories. Tall cylindrical body, black screw-top lid, small original light gray G shield centered vertically on front, no additional text. Entire bottle visible, matte finish.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-4b771388-ab19-4953-acb0-05c5aa3ea5c1.png"
+    },
+    {
+      "name": "caderno-anotacoes",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single black hardbound notebook as in reference accessories: portrait format, black textured cover, black elastic band near right edge, rounded corners, original white G shield centered on front, light cream paper edges, three-quarter angle on stone. Whole item visible.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-1027520d-0bd6-4b00-80f3-c302486ab1c6.png"
+    },
+    {
+      "name": "kit-presente-referencia",
+      "prompt": "Use case: product-mockup. Create ONE individual photorealistic ecommerce product image inspired closely by the attached Guerreiros store reference. Only the requested product, NO website UI, NO collage, NO price tags, NO extra writing or watermark. Square framing, entire product with comfortable 10% margins, consistent warm off-white limestone studio background, soft side light, refined natural shadow, premium editorial catalog. For the brand symbol preserve the angular G shield shape in the reference. Single open premium black gift box matching reference categories, three-quarter overhead view. Inside neatly arranged brown kraft-covered notebook with dark G shield, matte black mug with white G shield, small wrapped kraft gift with thin tan ribbon, black tissue paper. Elegant cohesive Christian brand gift presentation, no books with invented titles, no bottle. Entire box visible.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-51ff9e1d-cf2a-4491-bbf9-274aa55d3e9e.png"
+    },
+    {
+      "name": "livro-lideres-transbordam",
+      "prompt": "Use case: product-mockup. One individual photorealistic ecommerce photograph of the book identified as 'Líderes que Transbordam' in the category filter and book stack of the attached store reference. Single upright paperback, entire book visible, navy black cover with elegant gold serif title 'LÍDERES QUE TRANSBORDAM', subtle gold horizontal rules and restrained embossed texture. Do not invent an author or subtitle. Warm off-white limestone studio background, soft side light, natural refined shadow, square framing and 10% margins. No website UI, no prices, no extra products, no watermark. This is a conceptual cover because only the spine/listing is shown in the reference.",
+      "generated_file": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-c0bff88d-5cb6-434d-ae47-1dca9b5ab719.png"
+    }
+  ]
+}

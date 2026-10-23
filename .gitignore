@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.dev-secret
+.local-admin.txt
+db.sqlite3
+media/
+staticfiles/
+*.log
+backups/
+.preview.pid
+.preview.sock
+node_modules/
+.next/
+dist/
+*.tsbuildinfo
+data/
+
+# Artefatos de trabalho da raiz (cópias já preservadas em design/originais/)
+/ESTAMPA*.eps
+/ESTAMPA*.pdf
+/*.mp4

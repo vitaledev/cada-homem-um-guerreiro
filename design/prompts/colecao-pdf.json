@@ -1,0 +1,30 @@
+{
+  "mode": "Ferramenta nativa image_gen",
+  "date": "2026-10-22",
+  "assets": [
+    {
+      "name": "camiseta-original-frente",
+      "reference": "/tmp/guerreiros-ref-6.png",
+      "prompt": "Create ONE premium ecommerce product photograph of the FRONT of the exact navy t-shirt in the LEFT half of the supplied reference sheet. Faithful reproduction of provided print design, not a redesign. Navy crew neck cotton t-shirt laid flat, completely visible, sleeves spread gently, warm off-white limestone background matching premium editorial catalog. Preserve EXACT chest lockup: cyan small 'CADA HOMEM UM' above white angular 'GUERREIRO' with white G shield at its right. Exact cyan G shield on WEARER'S RIGHT sleeve, which is viewer's LEFT. Oversized thin CYAN OUTLINE shield wraps from WEARER'S LEFT lower side (viewer's RIGHT), only partial shield appears on front, like reference. Same sizes and placements relative to shirt. No back print visible in this view. Remove hanger, reference sheet, instruction headings and borders. Straight-on orthographic photo, not tilted; preserve the print typography and geometry from reference. Realistic fine fabric, soft studio light. Square image, shirt fills frame with generous 8% margins. No extra logos, no invented prints, no watermark.",
+      "generatedFile": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-5bff8c8b-8b0f-46b2-98fd-ee894e6a26c4.png"
+    },
+    {
+      "name": "camiseta-original-costas",
+      "reference": "/tmp/guerreiros-ref-6.png",
+      "prompt": "Create ONE premium ecommerce product photograph of the BACK of the exact navy t-shirt in the RIGHT half of the reference sheet. Faithful original print reproduction. Navy crew neck cotton t-shirt laid completely flat, entire garment visible, sleeves gently spread, straight-on orthographic photo, warm off-white limestone studio background. Keep exact CYAN G shield centered beneath back neckline and the exact WHITE angular text in ONE line beneath it: 'SI VIS PACEM PARA BELLUM'. Preserve the lettering shape from reference, DO NOT change PARA to PARABELLUM. Oversized thin CYAN outline shield wraps onto lower back from viewer's LEFT side, partially cut by side seam, same placement and proportions as reference. No chest print on back, no extra print in middle. Remove hanger and reference-sheet headings/borders. Realistic fabric, soft studio light. Square image, 8% margins, no watermark.",
+      "generatedFile": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-2b9723a9-3846-4b79-bf13-884f9e9847a1.png"
+    },
+    {
+      "name": "bone-original-frente",
+      "reference": "/tmp/guerreiros-ref-7.png",
+      "prompt": "Create ONE premium ecommerce photograph of the FRONT of the exact navy baseball cap shown on the LEFT of the supplied reference. Navy cotton curved bill six-panel adjustable baseball cap, centered on warm off-white limestone studio backdrop. Preserve the EXACT ORIGINAL G shield embroidery shown in reference: cyan fill with fine WHITE border, angular G shield geometry identical, centered front panel. Same size and proportions. Camera at near-front slight high angle, full cap and visor visible, navy fabric weave and stitch details, fine cyan embroidered thread. No side logo, no added text, no reference-sheet layout or headings, no watermark. Square image with 12% margins, luxury catalog consistency.",
+      "generatedFile": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-988b56c3-5f2e-46c4-ba87-4693e0de3019.png"
+    },
+    {
+      "name": "bone-original-costas",
+      "reference": "/tmp/guerreiros-ref-7.png",
+      "prompt": "Create ONE premium ecommerce photograph of the BACK of the exact navy baseball cap shown on the RIGHT of supplied reference. Navy six-panel cotton baseball cap with adjustable strap and opening, warm off-white limestone studio background, straight-on back view, full cap visible. Preserve exact original white embroidered lettering in TWO LINES centered above strap opening: first line 'SI VIS PACEM', second line 'PARA BELLUM'. Match original angular letterforms, size and position from the reference; no additional G shield on back, no other logos or decorations. Fine textile and thread texture, soft side illumination. Remove reference sheet titles and borders. Square framing, cap fills center with 12% margins, no watermark.",
+      "generatedFile": "/home/dev01/.codex/generated_images/01a16428-5d9e-77d1-adc9-4f69692d0320/exec-2c73b5ef-bfb4-4563-9cb4-c235940ec2b8.png"
+    }
+  ]
+}
