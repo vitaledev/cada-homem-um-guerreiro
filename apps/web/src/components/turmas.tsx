@@ -1,11 +1,9 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import type { Turma, TurmaOverview } from "@guerreiros/contracts";
 import { TURMA_ENROLLMENT_LABEL } from "@guerreiros/contracts";
 import { api } from "@/lib/browser";
-import { brl } from "@/lib/format";
 import { useSession } from "./session";
 
 export { StatusChip, when } from "./turmas-shared";
@@ -121,38 +119,14 @@ export function TurmaActions({
   overview: TurmaOverview | null;
   nextPath: string;
 }) {
-  const router = useRouter();
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState("");
   const enrollment = overview?.enrollments.find((e) => e.turmaId === turma.id);
   const request =
     overview?.requests.find((r) => r.turmaId === turma.id) ||
     overview?.requests.find(
       (r) => r.turmaId === null && r.bookLevel === turma.bookLevel,
     );
-  async function step(action: "enroll" | "checkout") {
-    setBusy(action);
-    setError("");
-    try {
-      await api("turmas/" + turma.id + "/" + action, "POST", {});
-      if (action === "checkout")
-        router.push("/turma/" + turma.slug + "/ambiente/");
-      else {
-        router.refresh();
-        setBusy("");
-      }
-    } catch (e) {
-      setError((e as Error).message);
-      setBusy("");
-    }
-  }
   return (
     <div className="turma-actions">
-      {error ? (
-        <p className="turma-note bad" role="alert">
-          {error}
-        </p>
-      ) : null}
       {enrollment?.status === "CONFIRMED" ? (
         <div className="turma-note ok">
           <strong>Você já faz parte desta turma.</strong>
@@ -169,19 +143,10 @@ export function TurmaActions({
         <div className="turma-note">
           <strong>{TURMA_ENROLLMENT_LABEL.RESERVED}.</strong>
           <p>
-            Vaga reservada no valor de {brl(turma.priceCents)}. Confirme o
-            pagamento simulado para liberar o ambiente.
+            A administração da turma está comprando e enviando os materiais.
+            Aguarde o contato para confirmar seus dados de envio; não é
+            necessário pagar nesta página.
           </p>
-          <button
-            className="button cyan"
-            disabled={!!busy}
-            onClick={() => step("checkout")}
-          >
-            {busy === "checkout"
-              ? "Confirmando…"
-              : "Confirmar pagamento simulado"}
-            <span>↗</span>
-          </button>
         </div>
       ) : null}
       {!enrollment && request?.status === "APPROVED" ? (
@@ -189,17 +154,9 @@ export function TurmaActions({
           <div className="turma-note ok">
             <strong>Solicitação aprovada.</strong>
             <p>
-              Sua vaga está garantida. Conclua a matrícula por{" "}
-              {brl(turma.priceCents)} para entrar no ambiente.
+              Sua solicitação foi aprovada. A administração compra e envia os
+              materiais; aguarde as orientações para participar.
             </p>
-            <button
-              className="button cyan"
-              disabled={!!busy}
-              onClick={() => step("enroll")}
-            >
-              {busy === "enroll" ? "Reservando…" : "Reservar minha vaga"}
-              <span>↗</span>
-            </button>
           </div>
         ) : (
           <div className="turma-note">

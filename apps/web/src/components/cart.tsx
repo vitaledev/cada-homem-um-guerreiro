@@ -122,15 +122,15 @@ export function CartView() {
                 <strong>{brl(cart.totalCents)}</strong>
               </div>
               <p>
-                Frete e condições de pagamento serão configurados antes do
-                lançamento.
+                Este pedido reúne produtos sob demanda. Frete e condições de
+                pagamento serão configurados no checkout futuro.
               </p>
               <button className="button dark-button" disabled>
-                Checkout em preparação
+                Checkout futuro
               </button>
               <p className="concept-note">
-                Esta é uma prévia de desenvolvimento. Nenhum pagamento é
-                solicitado.
+                Os itens já podem ser adicionados à sacola. O pagamento será
+                habilitado quando o checkout for publicado.
               </p>
               <Link className="text-link" href="/loja/">
                 Continuar explorando ↗

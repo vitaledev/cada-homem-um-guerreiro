@@ -210,6 +210,9 @@ export const TURMA_ENROLLMENT_LABEL: Record<TurmaEnrollmentStatus, string> = {
 export type TurmaItem = {
   id: number;
   turmaId: number;
+  productId: number | null;
+  productSlug: string | null;
+  productImageUrl: string | null;
   name: string;
   description: string;
   priceCents: number | null;
@@ -350,6 +353,7 @@ export type InterestInput = z.infer<typeof interestSchema>;
 const turmaItemSchema = z
   .object({
     id: z.number().int().positive().optional(),
+    productId: z.number().int().positive().nullable().optional(),
     name: z.string().trim().min(1).max(120),
     description: z.string().max(400),
     priceCents: money.nullable(),

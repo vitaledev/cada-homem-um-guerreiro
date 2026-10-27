@@ -14,6 +14,18 @@
       "description": "Capa verde com espada e título em destaque, conforme o produto exibido na referência.\n\nMockup de demonstração criado a partir da imagem enviada. Capa/estampa, informações comerciais e estoque devem ser revisados antes da venda real. Não são atribuídos ISBN, avaliações ou especificações não confirmadas."
     },
     {
+      "sku": "REF-IMG-L04",
+      "title": "Cada homem um guerreiro — Livro 4",
+      "slug": "cada-homem-um-guerreiro-livro-4",
+      "category": "livros",
+      "subtitle": "Bob Reehm · Livro 4",
+      "price": "59.90",
+      "image": "livro-guerreiro-4",
+      "featured": false,
+      "price_from_reference": true,
+      "description": "Capa clara com espada e a mensagem Cada homem um guerreiro puro, conforme a referência enviada.\n\nMockup de demonstração criado a partir da imagem enviada. Capa/estampa, informações comerciais e estoque devem ser revisados antes da venda real. Não são atribuídos ISBN, avaliações ou especificações não confirmadas."
+    },
+    {
       "sku": "REF-IMG-L01",
       "title": "Cada homem um guerreiro — Livro 1: Andar com Deus",
       "slug": "cada-homem-um-guerreiro-livro-1",

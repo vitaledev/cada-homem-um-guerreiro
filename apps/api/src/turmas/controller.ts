@@ -93,17 +93,18 @@ export class TurmasController {
   }
   @Post(":id/enroll")
   async enroll(@Param("id", ParseIntPipe) id: number, @Req() req: AuthRequest) {
-    if (!req.actor) throw new ForbiddenException("Entre para se inscrever.");
-    return this.turmas.enroll(req.actor, id);
+    throw new ForbiddenException(
+      "A matrícula e a compra dos materiais são conduzidas pela administração da turma.",
+    );
   }
   @Post(":id/checkout")
   async checkout(
     @Param("id", ParseIntPipe) id: number,
     @Req() req: AuthRequest,
   ) {
-    if (!req.actor)
-      throw new ForbiddenException("Entre para concluir a matrícula.");
-    return this.turmas.checkout(req.actor, id);
+    throw new ForbiddenException(
+      "A compra e o envio dos materiais são conduzidos pela administração da turma.",
+    );
   }
   @Post(":id/modules")
   async moduleCreate(

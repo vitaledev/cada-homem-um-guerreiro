@@ -216,6 +216,27 @@
   flex-direction: column;
   gap: 15px;
 }
+.turma-detail-media > .turma-detail-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: #eceae4;
+  border: 1px solid var(--line);
+}
+.turma-detail-media > .turma-detail-cover > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.turma-detail-cover-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
 .turma-detail-media > img {
   width: 100%;
   aspect-ratio: 1;
@@ -255,9 +276,39 @@
 .turma-detail-price {
   margin: 26px 0;
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: stretch;
+  gap: 14px;
   flex-wrap: wrap;
+}
+.turma-detail-price-value,
+.turma-detail-seats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  min-width: 150px;
+}
+.turma-detail-price-value small,
+.turma-detail-seats small {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+.turma-detail-price-value strong {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--deep);
+  line-height: 1.1;
+}
+.turma-detail-seats strong {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2b6152;
+  line-height: 1.1;
 }
 .turma-detail-price strong {
   font-size: 27px;
@@ -283,13 +334,27 @@
 }
 .turma-items li {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 15px;
   padding: 12px 14px;
   background: #fff;
   border: 1px solid var(--line);
   font-size: 12px;
+}
+.turma-item-image {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  background: #eceae4;
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.turma-item-link {
+  display: inline-block;
+  margin-top: 4px;
+  color: #245d6d;
+  text-decoration: underline;
 }
 .turma-items li span strong {
   display: block;
@@ -326,22 +391,42 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 20px;
+  padding: 22px;
   background: #fff;
   border: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
 }
+.interest-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.interest-form input,
 .interest-form textarea {
-  display: block;
-  width: 100%;
-  min-height: 86px;
-  padding: 10px 12px;
-  margin-top: 10px;
+  padding: 11px 13px;
   border: 1px solid #bdc7c7;
   border-radius: 3px;
   background: #fff;
   color: var(--text);
   font: inherit;
   font-size: 13px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.interest-form input:focus,
+.interest-form textarea:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(115, 212, 231, 0.18);
+}
+.interest-form textarea {
+  display: block;
+  width: 100%;
+  min-height: 86px;
   resize: vertical;
 }
 .interest-form small {
@@ -1173,6 +1258,14 @@
   .studio-layout {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+  .turma-detail-media > .turma-detail-cover {
+    aspect-ratio: 16/10;
+  }
+  .turma-detail-price-value,
+  .turma-detail-seats {
+    flex: 1 1 0;
+    min-width: 0;
   }
   .turma-detail {
     padding: 0 5% 50px;

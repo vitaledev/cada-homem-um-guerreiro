@@ -51,6 +51,7 @@ function turmaPayload(turma: Turma, patch: Partial<Turma> = {}) {
     imageAlt: merged.imageAlt,
     items: merged.items.map((item) => ({
       ...(item.id ? { id: item.id } : {}),
+      productId: item.productId ?? null,
       name: item.name,
       description: item.description,
       priceCents: item.priceCents,
@@ -798,9 +799,24 @@ function AdminTurmaEditor({
   const [items, setItems] = useState(
     turma.items.map((item) => ({
       ...item,
+      productId: item.productId ?? null,
+      productSlug: item.productSlug ?? null,
+      productImageUrl: item.productImageUrl ?? null,
       priceText: priceText(item.priceCents),
     })),
   );
+  const [products, setProducts] = useState<
+    Array<{
+      id: number;
+      title: string;
+      slug: string;
+      priceCents: number;
+      imageUrl: string;
+      description: string;
+      subtitle: string;
+    }>
+  >([]);
+  const [pickerProduct, setPickerProduct] = useState("");
   const [busy, setBusy] = useState(false);
   const [config, setConfig] = useState<TurmaEnvConfig | null>(null);
   const [configForm, setConfigForm] = useState({
@@ -831,6 +847,11 @@ function AdminTurmaEditor({
       })
       .catch(() => setConfig(null));
   }, [turma.id]);
+  useEffect(() => {
+    api<{ items: typeof products }>("catalog/products")
+      .then((data) => setProducts(data.items || []))
+      .catch(() => setProducts([]));
+  }, []);
 
   function parsePrice(value: string, label: string) {
     const clean = value.trim().replace(",", ".");
@@ -859,6 +880,7 @@ function AdminTurmaEditor({
         seatsTotal: seats,
         items: items.map((item) => ({
           ...(item.id ? { id: item.id } : {}),
+          productId: item.productId ?? null,
           name: item.name,
           description: item.description,
           priceCents: item.priceText.trim()
@@ -1108,6 +1130,50 @@ function AdminTurmaEditor({
             Lista exibida na página da turma antes da matrícula (livro, caderno,
             vestuário etc.).
           </p>
+          <div className="admin-inline admin-item-row" style={{ alignItems: "end" }}>
+            <label className="wide">
+              Adicionar produto da loja ao pacote
+              <select
+                value={pickerProduct}
+                onChange={(e) => setPickerProduct(e.target.value)}
+              >
+                <option value="">Selecione um produto</option>
+                {products.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.title} · {brl(p.priceCents)}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              type="button"
+              className="admin-secondary"
+              disabled={!pickerProduct}
+              onClick={() => {
+                const p = products.find((x) => x.id === Number(pickerProduct));
+                if (!p) return;
+                setItems([
+                  ...items,
+                  {
+                    id: 0,
+                    turmaId: turma.id,
+                    productId: p.id,
+                    productSlug: p.slug,
+                    productImageUrl: p.imageUrl,
+                    name: p.title,
+                    description: p.subtitle || p.description.slice(0, 120),
+                    priceCents: p.priceCents,
+                    required: true,
+                    order: items.length,
+                    priceText: priceText(p.priceCents),
+                  },
+                ]);
+                setPickerProduct("");
+              }}
+            >
+              + Adicionar produto
+            </button>
+          </div>
           {items.map((item, index) => (
             <div className="admin-inline admin-item-row" key={index}>
               <label>
@@ -1204,6 +1270,9 @@ function AdminTurmaEditor({
                 {
                   id: 0,
                   turmaId: turma.id,
+                  productId: null,
+                  productSlug: null,
+                  productImageUrl: null,
                   name: "",
                   description: "",
                   priceCents: null,

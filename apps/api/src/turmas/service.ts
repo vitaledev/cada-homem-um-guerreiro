@@ -110,6 +110,7 @@ export class TurmasService {
     const [items, taken, interests, leaders] = await Promise.all([
       this.db.getRepository(TurmaItemEntity).find({
         where: { turmaId: In(ids) },
+        relations: { product: true },
         order: { order: "ASC", id: "ASC" },
       }),
       this.db
@@ -171,6 +172,8 @@ export class TurmasService {
           ({
             id,
             turmaId,
+            productId,
+            product,
             name,
             description,
             priceCents,
@@ -179,6 +182,9 @@ export class TurmasService {
           }) => ({
             id,
             turmaId,
+            productId: productId ?? null,
+            productSlug: product?.slug ?? null,
+            productImageUrl: product?.imageUrl ?? null,
             name,
             description,
             priceCents,

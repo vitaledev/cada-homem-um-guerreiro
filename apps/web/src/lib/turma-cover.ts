@@ -2,10 +2,10 @@ import type { TurmaLevel } from "@guerreiros/contracts";
 
 /** Capa de cada livro da coleção, usada como imagem padrão das turmas. */
 export const BOOK_COVERS: Record<TurmaLevel, string> = {
-  1: "/static/design/mockups/catalogo-referencia/livro-guerreiro-1.webp",
-  2: "/static/design/mockups/catalogo-referencia/livro-guerreiro-2.webp",
-  3: "/static/design/mockups/catalogo-referencia/livro-guerreiro-3.webp",
-  4: "/static/design/logos/simbolo-escuro.svg",
+  1: "/static/design/mockups/catalogo-referencia/livro-guerreiro-1-gerado-3d.png",
+  2: "/static/design/mockups/catalogo-referencia/livro-guerreiro-2-gerado-3d.png",
+  3: "/static/design/mockups/catalogo-referencia/livro-guerreiro-3-gerado-3d.png",
+  4: "/static/design/mockups/catalogo-referencia/livro-guerreiro-4-gerado-3d.png",
 };
 
 export const DEFAULT_TURMA_IMAGE = "/static/design/logos/simbolo-escuro.svg";

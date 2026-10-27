@@ -54,7 +54,31 @@ export function Gallery({ product: p }: { product: Product }) {
     </div>
   );
 }
-export function BuyForm({ product: p }: { product: Product }) {
+export function BuyForm({
+  product: p,
+  officialPurchaseUrl,
+}: {
+  product: Product;
+  officialPurchaseUrl?: string;
+}) {
+  if (officialPurchaseUrl) {
+    return (
+      <div className="buy-form">
+        <a
+          className="button dark-button"
+          href={officialPurchaseUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Comprar no site oficial <span>↗</span>
+        </a>
+        <p className="concept-note">
+          A compra e a entrega deste livro são feitas pela loja oficial da RTM
+          Brasil.
+        </p>
+      </div>
+    );
+  }
   const [variant, setVariant] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [error, setError] = useState("");
@@ -75,7 +99,8 @@ export function BuyForm({ product: p }: { product: Product }) {
             quantity,
           });
           await refresh();
-          router.push("/carrinho/");
+          router.replace("/carrinho/");
+          router.refresh();
         } catch (e) {
           setError((e as Error).message);
         } finally {
@@ -117,7 +142,7 @@ export function BuyForm({ product: p }: { product: Product }) {
           />
         </label>
         <button className="button dark-button" disabled={busy} type="submit">
-          {busy ? "Adicionando…" : "Adicionar à sacola"} <span>↗</span>
+          {busy ? "Adicionando…" : "Adicionar ao carrinho"} <span>↗</span>
         </button>
       </div>
       {error ? (

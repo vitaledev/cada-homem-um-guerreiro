@@ -45,12 +45,19 @@ export default async function TurmaPage({
       </div>
       <section className="turma-detail">
         <div className="turma-detail-media">
-          <img
-            src={turmaCover(turma.bookLevel, turma.imageUrl)}
-            alt={turma.imageAlt || `Capa do livro Guerreiro ${turma.bookLevel}`}
-            width="1000"
-            height="1000"
-          />
+          <div className="turma-detail-cover">
+            <img
+              src={turmaCover(turma.bookLevel, turma.imageUrl)}
+              alt={
+                turma.imageAlt || `Capa do livro Guerreiro ${turma.bookLevel}`
+              }
+              width="1000"
+              height="1000"
+            />
+            <span className="turma-detail-cover-badge">
+              <StatusChip status={turma.status} />
+            </span>
+          </div>
           <div className="turma-detail-strip">
             <span>
               <b>Livro</b> Guerreiro {turma.bookLevel}
@@ -76,10 +83,20 @@ export default async function TurmaPage({
           <h1>{turma.title}</h1>
           <p className="detail-subtitle">{turma.subtitle}</p>
           <div className="turma-detail-price">
-            <strong>
-              {turma.priceCents ? brl(turma.priceCents) : "A definir"}
-            </strong>
-            <StatusChip status={turma.status} />
+            <div className="turma-detail-price-value">
+              <small>Referência da turma</small>
+              <strong>
+                {turma.priceCents ? brl(turma.priceCents) : "A definir"}
+              </strong>
+            </div>
+            {turma.seatsTotal ? (
+              <div className="turma-detail-seats">
+                <small>Vagas</small>
+                <strong>
+                  {Math.max(0, turma.seatsTotal - turma.seatsTaken)} livres
+                </strong>
+              </div>
+            ) : null}
           </div>
           <div className="product-description">
             {turma.description.split(/\n\n+/).map((text, i) => (
@@ -88,14 +105,39 @@ export default async function TurmaPage({
           </div>
           {required.length ? (
             <section className="turma-items">
-              <h2>O que você precisa ter</h2>
+              <h2>Materiais da turma</h2>
+              <p className="turma-items-note">
+                A compra e o envio dos itens ficam sob responsabilidade da
+                administração da turma. Você não precisa comprá-los por esta
+                página.
+              </p>
               <ul>
                 {required.map((item) => (
                   <li key={item.id}>
+                    {item.productImageUrl ? (
+                      <img
+                        className="turma-item-image"
+                        src={item.productImageUrl}
+                        alt={item.name}
+                        width="64"
+                        height="64"
+                      />
+                    ) : null}
                     <span>
-                      <strong>{item.name}</strong>
+                      {item.productSlug ? (
+                        <Link href={"/produto/" + item.productSlug + "/"}>
+                          <strong>{item.name}</strong>
+                        </Link>
+                      ) : (
+                        <strong>{item.name}</strong>
+                      )}
                       {item.description ? (
                         <small>{item.description}</small>
+                      ) : null}
+                      {item.productSlug ? (
+                        <small className="turma-item-link">
+                          Ver produto na loja ↗
+                        </small>
                       ) : null}
                     </span>
                     <b>{item.priceCents ? brl(item.priceCents) : "—"}</b>
@@ -121,10 +163,11 @@ export default async function TurmaPage({
             </p>
           </details>
           <details>
-            <summary>Pagamento</summary>
+            <summary>Compra e envio</summary>
             <p>
-              Nesta prévia, o pagamento é simulado para testar o fluxo completo.
-              A integração de cobrança será configurada antes do lançamento.
+              A gestão da turma organiza a compra dos materiais e o envio para
+              os participantes interessados. Depois da aprovação, aguarde o
+              contato da administração.
             </p>
           </details>
         </div>

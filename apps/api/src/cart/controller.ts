@@ -9,6 +9,7 @@ import {
   Req,
   UseGuards,
   BadRequestException,
+  ConflictException,
 } from "@nestjs/common";
 import { cartAddSchema, cartUpdateSchema, Cart } from "@guerreiros/contracts";
 import { SessionGuard, Sessions, AuthRequest } from "../auth/session";
@@ -51,6 +52,10 @@ export class CartController {
   @Post() async add(@Body() body: unknown, @Req() req: AuthRequest) {
     const data = cartAddSchema.parse(body);
     const p = await this.catalog.byId(data.productId);
+    if (p.category.slug === "livros")
+      throw new ConflictException(
+        "Livros devem ser comprados na loja oficial da RTM.",
+      );
     const v = data.variantId
       ? p.variants.find((v) => v.id === data.variantId)
       : null;

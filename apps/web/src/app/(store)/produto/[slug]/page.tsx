@@ -4,6 +4,7 @@ import { getProduct, getCatalog } from "@/lib/server";
 import { brl } from "@/lib/format";
 import { Gallery, BuyForm } from "@/components/product-interactions";
 import { ProductGrid } from "@/components/product-card";
+import { isBook, officialBookUrl } from "@/lib/commerce";
 export async function generateMetadata({
   params,
 }: {
@@ -61,9 +62,20 @@ export default async function ProductPage({
               disponibilidade são de demonstração.
             </p>
           ) : null}
-          <BuyForm product={p} />
+          <BuyForm
+            product={p}
+            officialPurchaseUrl={
+              isBook(p.category.slug) ? officialBookUrl(p.slug) : undefined
+            }
+          />
+          {!isBook(p.category.slug) ? (
+            <p className="concept-note">
+              Este item é produzido sob demanda. A solicitação será confirmada
+              pela equipe antes da produção e do envio.
+            </p>
+          ) : null}
           <div className="detail-promises">
-            <p>Compra em preparação — checkout indisponível nesta prévia.</p>
+            <p>Itens sob demanda entram na sacola e poderão ser finalizados no checkout futuro.</p>
             <p>SKU {p.sku}</p>
             <p>
               {p.variants.some((v) => v.stock > 0) ||

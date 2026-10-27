@@ -135,6 +135,10 @@ export class TurmaItemEntity {
   @ManyToOne(() => TurmaEntity, { onDelete: "CASCADE" })
   @JoinColumn({ name: "turmaId" })
   turma: TurmaEntity;
+  @Column({ type: "integer", nullable: true }) productId: number | null;
+  @ManyToOne(() => ProductEntity, { onDelete: "SET NULL" })
+  @JoinColumn({ name: "productId" })
+  product: ProductEntity | null;
   @Column() name: string;
   @Column({ default: "" }) description: string;
   @Column({ type: "integer", nullable: true }) priceCents: number | null;

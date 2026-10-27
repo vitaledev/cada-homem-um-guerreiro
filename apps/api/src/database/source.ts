@@ -6,6 +6,7 @@ import { entities } from "./entities";
 import {
   InitialSchema1792620000000,
   TurmasEncontros1792650000000,
+  TurmaItemProducts1792650000001,
 } from "./schema";
 export const projectRoot = process.env.PROJECT_ROOT
   ? resolve(process.env.PROJECT_ROOT)
@@ -26,6 +27,7 @@ export function createSource() {
           migrations: [
             InitialSchema1792620000000,
             TurmasEncontros1792650000000,
+            TurmaItemProducts1792650000001,
           ],
           logging: false,
         }
