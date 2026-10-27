@@ -2,10 +2,6 @@
 
 Loja em React 19 / Next.js 16 (App Router), API NestJS 11 e TypeScript. Monorepo pnpm com contratos Zod compartilhados. Hospedagem e PostgreSQL próprios, sem serviços de banco terceirizados.
 
-## Tecnologias
-
-Python · JavaScript · TypeScript · React · Node.js · Next.js · Docker · Linux · SQL · PostgreSQL · Git · Astro · Java · n8n
-
 O catálogo existente foi migrado: 22 produtos, cinco categorias, variações, galerias, preços, estoque e credenciais do administrador. A identidade visual, fontes locais e imagens foram mantidas. O checkout continua indisponível até a integração de pagamentos e frete.
 
 ## Telas
